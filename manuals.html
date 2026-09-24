@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuals - vsdun</title>
+    <script src="libs/tailwindcss.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <script src="libs/vue.global.prod.js"></script>
+    <script src="libs/vue-i18n.global.prod.js"></script>
+    <style>[v-cloak] { display: none; }</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="app" v-cloak class="min-h-screen flex flex-col">
+        <app-navbar></app-navbar>
+
+        <main class="flex-grow">
+            <!-- Hero Search Section -->
+            <div class="bg-primary text-white py-20 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-30 bg-[url('images/manuals-bg.jpg')] bg-cover bg-center mix-blend-luminosity"></div>
+                <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl font-extrabold tracking-tight mb-4">{{ $t('manuals.title') }}</h1>
+                    <p class="text-lg text-blue-100 mb-10">{{ $t('manuals.subtitle') }}</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="relative rounded-2xl shadow-2xl max-w-3xl mx-auto">
+                        <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-search text-gray-400 text-xl"></i>
+                        </div>
+                        <input type="text" class="block w-full pl-14 pr-6 py-5 text-lg text-gray-900 border-0 rounded-2xl focus:ring-4 focus:ring-blue-300 transition-all bg-white shadow-inner placeholder-gray-400" :placeholder="$t('manuals.search')">
+                        <button class="absolute inset-y-2 right-2 bg-gray-900 hover:bg-black text-white px-8 rounded-xl font-bold transition-colors">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Sidebar Categories -->
+                        <div class="lg:col-span-1 space-y-2">
+                            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Categories</h3>
+                            <a href="#" 
+                               v-for="cat in categories" :key="cat.id"
+                               @click.prevent="selectCategory(cat.id)"
+                               :class="activeCategory === cat.id 
+                                    ? 'block px-4 py-3 rounded-lg bg-white border border-gray-200 text-primary font-bold shadow-sm flex items-center justify-between' 
+                                    : 'block px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:border-gray-200 border border-transparent transition-all flex items-center'">
+                                <span><i :class="['fa-solid', cat.icon, 'mr-2 w-5 text-center']"></i> {{ $t(cat.i18nKey) }}</span>
+                                <i v-if="activeCategory === cat.id" class="fa-solid fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="lg:col-span-3">
+                            <div class="mb-6 flex justify-between items-center">
+                                <h2 class="text-lg font-bold text-gray-900">{{ $t('manuals.popular') }}</h2>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                                <!-- Featured Doc Cards -->
+                                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group cursor-pointer" v-for="doc in featuredDocs" :key="doc.id">
+                                    <div class="absolute top-0 left-0 w-1 h-full bg-primary transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform"></div>
+                                    <div class="flex items-start">
+                                        <div class="bg-red-50 text-red-500 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0">
+                                            <i class="fa-regular fa-file-pdf"></i>
+                                        </div>
+                                        <div class="ml-4 flex-grow min-w-0">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <span class="text-xs font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded">{{ $t('manuals.' + doc.type) }}</span>
+                                                <span class="text-xs text-gray-400">{{ doc.size }}</span>
+                                            </div>
+                                            <h3 class="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight mb-2 truncate" :title="$t('manuals.cat_' + doc.category) + ' - ' + $t('manuals.doc_title')">
+                                                {{ $t('manuals.cat_' + doc.category) }} - {{ $t('manuals.doc_title') }}
+                                            </h3>
+                                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">{{ $t('manuals.doc_desc') }}</p>
+                                            <button class="text-xs font-bold text-primary flex items-center">
+                                                <i class="fa-solid fa-download mr-1"></i> {{ $t('manuals.download') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- List view for older/other docs -->
+                            <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm" v-if="listDocs.length > 0">
+                                <ul role="list" class="divide-y divide-gray-100">
+                                    <li v-for="doc in listDocs" :key="doc.id" class="hover:bg-gray-50 transition-colors">
+                                        <a href="#" class="px-6 py-4 flex items-center justify-between">
+                                            <div class="flex items-center min-w-0">
+                                                <i class="fa-regular fa-file-pdf text-red-400 text-xl w-8 text-center shrink-0"></i>
+                                                <div class="min-w-0 flex-1 px-4">
+                                                    <p class="text-sm font-bold text-gray-900 truncate">{{ $t('manuals.cat_' + doc.category) }} {{ $t('manuals.' + doc.type) }}</p>
+                                                    <p class="flex items-center text-xs text-gray-500 mt-1">
+                                                        <span>Updated: {{ doc.date }}</span>
+                                                        <span class="mx-2">&middot;</span>
+                                                        <span>English, Chinese</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <app-footer></app-footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/manuals.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        initVueApp(manualsPageLogic);
+    </script>
+</body>
+</html>
+

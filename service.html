@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service - vsdun</title>
+    <script src="libs/tailwindcss.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <script src="libs/vue.global.prod.js"></script>
+    <script src="libs/vue-i18n.global.prod.js"></script>
+    <style>[v-cloak] { display: none; }</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="app" v-cloak class="min-h-screen flex flex-col">
+        <app-navbar></app-navbar>
+
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <div class="bg-gray-900 text-white pt-24 pb-56 relative overflow-hidden">
+                <div class="absolute inset-0">
+                    <img class="w-full h-full object-cover" src="images/service-bg.jpg" alt="Service Header">
+                    <div class="absolute inset-0 bg-black/60 mix-blend-multiply"></div>
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-white mb-4">{{ $t('service.title') }}</h1>
+                    <p class="text-lg text-gray-300 max-w-3xl mx-auto">{{ $t('service.subtitle') }}</p>
+                </div>
+            </div>
+
+            <div class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Top Services -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 -mt-32 relative z-10">
+                        <!-- Technical Support -->
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center mb-4">
+                                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-50 text-primary mr-4 shrink-0">
+                                        <i class="fa-solid fa-headset text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900">{{ $t('service.support_title') }}</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base mb-6">{{ $t('service.support_desc') }}</p>
+                            </div>
+                            <div class="text-primary font-bold text-lg sm:text-xl flex items-center bg-gray-50 py-3 px-4 rounded-xl border border-gray-100 w-fit">
+                                <i class="fa-solid fa-phone mr-3"></i> 400-888-8888
+                            </div>
+                        </div>
+
+                        <!-- Repair -->
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center mb-4">
+                                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-50 text-primary mr-4 shrink-0">
+                                        <i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900">{{ $t('service.repair_title') }}</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base mb-6">{{ $t('service.repair_desc') }}</p>
+                            </div>
+                            <button class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-xl transition shadow-md flex items-center w-fit text-sm sm:text-base">
+                                {{ $t('service.repair_btn') }} <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service Process -->
+                    <div class="mb-24">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $t('service.process_title') }}</h2>
+                            <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                            <!-- Process Line (desktop) -->
+                            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 -translate-y-1/2"></div>
+                            
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-gray-50 shadow-md">1</div>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ $t('service.process_1') }}</h4>
+                                <p class="text-sm text-gray-500">{{ $t('service.process_1_desc') }}</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-gray-50 shadow-md">2</div>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ $t('service.process_2') }}</h4>
+                                <p class="text-sm text-gray-500">{{ $t('service.process_2_desc') }}</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-gray-50 shadow-md">3</div>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ $t('service.process_3') }}</h4>
+                                <p class="text-sm text-gray-500">{{ $t('service.process_3_desc') }}</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-gray-50 shadow-md">4</div>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ $t('service.process_4') }}</h4>
+                                <p class="text-sm text-gray-500">{{ $t('service.process_4_desc') }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SLA -->
+                    <div class="mb-24">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $t('service.sla_title') }}</h2>
+                            <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-primary transition-colors">
+                                <div class="p-8 text-center border-b border-gray-100 bg-gray-50">
+                                    <h3 class="text-xl font-bold text-gray-900">{{ $t('service.sla_basic') }}</h3>
+                                </div>
+                                <div class="p-8 text-center text-gray-600 font-medium h-32 flex flex-col justify-center">
+                                    {{ $t('service.sla_basic_desc') }}
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-2xl border-2 border-primary overflow-hidden shadow-xl transform scale-105 z-10 relative">
+                                <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                                <div class="p-8 text-center border-b border-gray-100 bg-primary/5">
+                                    <h3 class="text-xl font-bold text-primary">{{ $t('service.sla_pro') }}</h3>
+                                </div>
+                                <div class="p-8 text-center text-gray-900 font-bold h-32 flex flex-col justify-center">
+                                    {{ $t('service.sla_pro_desc') }}
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-primary transition-colors">
+                                <div class="p-8 text-center border-b border-gray-100 bg-gray-900">
+                                    <h3 class="text-xl font-bold text-white">{{ $t('service.sla_premium') }}</h3>
+                                </div>
+                                <div class="p-8 text-center text-gray-600 font-medium h-32 flex flex-col justify-center">
+                                    {{ $t('service.sla_premium_desc') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policies -->
+                    <div class="bg-white rounded-3xl p-10 md:p-16 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-12">
+                        <div class="md:w-1/3">
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">{{ $t('service.policy_title') }}</h3>
+                            <div class="w-16 h-1 bg-primary rounded-full mb-6"></div>
+                            <p class="text-gray-500">vsdun {{ $t('service.subtitle') }}</p>
+                        </div>
+                        <div class="md:w-2/3 w-full">
+                            <ul class="space-y-6">
+                                <li class="flex items-center bg-gray-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-500 flex items-center justify-center mr-4 shrink-0">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span class="text-lg text-gray-700 font-medium">{{ $t('service.policy_1') }}</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-500 flex items-center justify-center mr-4 shrink-0">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span class="text-lg text-gray-700 font-medium">{{ $t('service.policy_2') }}</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-500 flex items-center justify-center mr-4 shrink-0">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span class="text-lg text-gray-700 font-medium">{{ $t('service.policy_3') }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <app-footer></app-footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        initVueApp({});
+    </script>
+</body>
+</html>
+

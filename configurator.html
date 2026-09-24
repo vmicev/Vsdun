@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurator - vsdun</title>
+    <script src="libs/tailwindcss.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <script src="libs/vue.global.prod.js"></script>
+    <script src="libs/vue-i18n.global.prod.js"></script>
+    <style>
+        [v-cloak] { display: none; }
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: calc(100% - 1.25rem) center !important;
+            background-size: 1.2em 1.2em;
+            padding-right: 3rem !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="app" v-cloak class="min-h-screen flex flex-col">
+        <app-navbar></app-navbar>
+
+        <main class="flex-grow">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">{{ $t('configurator.title') }}</h1>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">{{ $t('configurator.desc') }}</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-12">
+                        <form v-if="!submitted" @submit.prevent="submitForm">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                                
+                                <!-- ================= LEFT COLUMN: SERVER ================= -->
+                                <div class="space-y-6">
+                                    <h2 class="text-2xl font-bold text-primary mb-8">{{ $t('configurator.server_title') }}</h2>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.producer') }}</label>
+                                        <select v-model="form.server.producer" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="vsdun">vsdun</option>
+                                            <option value="OEM">OEM</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.server_type') }}</label>
+                                        <select v-model="form.server.type" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="tower">{{ $t('configurator.server_type_tower') }}</option>
+                                            <option value="rack">{{ $t('configurator.server_type_rack') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.purpose') }}</label>
+                                        <select v-model="form.server.purpose" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1c">{{ $t('configurator.purpose_1c') }}</option>
+                                            <option value="video">{{ $t('configurator.purpose_video') }}</option>
+                                            <option value="file">{{ $t('configurator.purpose_file') }}</option>
+                                            <option value="terminal">{{ $t('configurator.purpose_term') }}</option>
+                                            <option value="office">{{ $t('configurator.purpose_office') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.users') }}</label>
+                                        <select v-model="form.server.users" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1-30">{{ $t('configurator.users_1') }}</option>
+                                            <option value="30-100">{{ $t('configurator.users_2') }}</option>
+                                            <option value="100-300">{{ $t('configurator.users_3') }}</option>
+                                            <option value=">300">{{ $t('configurator.users_4') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.cpu_count') }}</label>
+                                        <select v-model="form.server.cpuCount" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="4">4</option>
+                                            <option value="8">8</option>
+                                            <option value="20">20</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.cpu_cores') }}</label>
+                                        <input type="text" v-model="form.server.cpuCores" :placeholder="$t('configurator.cpu_cores_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.drive_count') }}</label>
+                                        <input type="text" v-model="form.server.drives" :placeholder="$t('configurator.drive_count_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.drive_vol') }}</label>
+                                        <input type="text" v-model="form.server.driveVol" :placeholder="$t('configurator.drive_vol_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.drive_hot') }}</label>
+                                        <div class="flex gap-4 items-center">
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.hotSwap" value="yes" class="text-primary border-gray-300 focus:ring-primary w-4 h-4">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.yes') }}</span>
+                                            </label>
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.hotSwap" value="no" class="text-primary border-gray-300 focus:ring-primary w-4 h-4 outline-none">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.no') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.raid') }}</label>
+                                        <div class="flex gap-4 items-center">
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.raid" value="yes" class="text-primary border-gray-300 focus:ring-primary w-4 h-4">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.yes') }}</span>
+                                            </label>
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.raid" value="no" class="text-primary border-gray-300 focus:ring-primary w-4 h-4 outline-none">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.no') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.ram_total') }}</label>
+                                        <input type="text" v-model="form.server.ramTotal" :placeholder="$t('configurator.ram_total_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.ram_stick') }}</label>
+                                        <select v-model="form.server.ramStick" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="8">8</option>
+                                            <option value="16">16</option>
+                                            <option value="32">32</option>
+                                            <option value="64">64</option>
+                                            <option value="128">128</option>
+                                            <option value="256">256</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.power_count') }}</label>
+                                        <select v-model="form.server.powerCount" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.power_hot') }}</label>
+                                        <div class="flex gap-4 items-center">
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.powerHot" value="yes" class="text-primary border-gray-300 focus:ring-primary w-4 h-4">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.yes') }}</span>
+                                            </label>
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="radio" v-model="form.server.powerHot" value="no" class="text-primary border-gray-300 focus:ring-primary w-4 h-4 outline-none">
+                                                <span class="ml-2 text-gray-700">{{ $t('configurator.no') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.eth_count') }}</label>
+                                        <select v-model="form.server.ethCount" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.eth_speed') }}</label>
+                                        <select v-model="form.server.ethSpeed" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1 Gb">1 Gb</option>
+                                            <option value="10 Gb">10 Gb</option>
+                                            <option value="25 Gb">25 Gb</option>
+                                            <option value="40 Gb">40 Gb</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.optic_count') }}</label>
+                                        <select v-model="form.server.opticCount" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- ================= RIGHT COLUMN: STORAGE ================= -->
+                                <div class="space-y-6">
+                                    <h2 class="text-2xl font-bold text-primary mb-8">{{ $t('configurator.storage_title') }}</h2>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.producer') }}</label>
+                                        <select v-model="form.storage.producer" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="AIC">AIC</option>
+                                            <option value="vsdun">vsdun</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.conn_type') }}</label>
+                                        <select v-model="form.storage.connType" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="direct">{{ $t('configurator.conn_direct') }}</option>
+                                            <option value="san">{{ $t('configurator.conn_san') }}</option>
+                                            <option value="nas">{{ $t('configurator.conn_nas') }}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.capacity') }}</label>
+                                        <input type="text" v-model="form.storage.capacity" :placeholder="$t('configurator.capacity_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.hot_data') }}</label>
+                                        <input type="text" v-model="form.storage.hotData" :placeholder="$t('configurator.hot_data_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.front_end') }}</label>
+                                        <select v-model="form.storage.frontEnd" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="fc">{{ $t('configurator.front_fc') }}</option>
+                                            <option value="iscsi">{{ $t('configurator.front_iscsi') }}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.exp_cabs') }}</label>
+                                        <input type="text" v-model="form.storage.expCabs" :placeholder="$t('configurator.exp_cabs_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.ctrl_count') }}</label>
+                                        <select v-model="form.storage.ctrlCount" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.ctrl_ports') }}</label>
+                                        <select v-model="form.storage.ctrlPorts" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="0">0</option>
+                                            <option value="2">2</option>
+                                            <option value="4">4</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.ctrl_cache') }}</label>
+                                        <input type="text" v-model="form.storage.ctrlCache" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white" placeholder="2 Gb">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.media_type') }}</label>
+                                        <select v-model="form.storage.mediaType" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="hdd">{{ $t('configurator.media_hdd') }}</option>
+                                            <option value="ssd">{{ $t('configurator.media_ssd') }}</option>
+                                            <option value="hybrid">{{ $t('configurator.media_hybrid') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.disk_iface') }}</label>
+                                        <select v-model="form.storage.diskIface" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                            <option value="sata">{{ $t('configurator.disk_sata') }}</option>
+                                            <option value="sas">{{ $t('configurator.disk_sas') }}</option>
+                                            <option value="nvme">{{ $t('configurator.disk_nvme') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- ================= COMMON CONTACT INFO ================= -->
+                            <div class="mt-16 bg-gray-50 border border-gray-200 rounded-3xl p-8 sm:p-12">
+                                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">{{ $t('configurator.contact_title') }}</h3>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.name') }}</label>
+                                        <input type="text" v-model="form.contact.name" required :placeholder="$t('configurator.name_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.phone') }}</label>
+                                        <input type="tel" v-model="form.contact.phone" required :placeholder="$t('configurator.phone_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('configurator.email') }}</label>
+                                        <input type="email" v-model="form.contact.email" required :placeholder="$t('configurator.email_ph')" class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-3 px-5 border bg-white">
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-10 flex justify-center">
+                                    <button type="submit" class="bg-gray-900 hover:bg-black text-white font-bold py-4 px-12 text-lg rounded-full transition shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                                        {{ $t('configurator.submit') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Success Message -->
+                        <div v-if="submitted" class="py-24 text-center">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-6">
+                                <i class="fa-solid fa-check text-4xl text-green-500"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">{{ $t('configurator.success') }}</h3>
+                            <button @click="submitted = false" class="mt-8 text-primary font-bold hover:underline">
+                                <i class="fa-solid fa-arrow-left mr-2"></i> 返回配置器
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <app-footer></app-footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/configurator.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        initVueApp(configuratorPageLogic);
+    </script>
+</body>
+</html>
+

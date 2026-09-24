@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - vsdun</title>
+    <script src="libs/tailwindcss.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <script src="libs/vue.global.prod.js"></script>
+    <script src="libs/vue-i18n.global.prod.js"></script>
+    <style>[v-cloak] { display: none; }</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="app" v-cloak class="min-h-screen flex flex-col">
+        <app-navbar></app-navbar>
+
+        <main class="flex-grow">
+            <div class="py-12 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Search Bar -->
+                    <div class="relative mb-6">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                        </div>
+                        <input v-model="searchQuery" type="text" :placeholder="$t('products.search_placeholder')" class="block w-full pl-11 pr-10 py-3 border border-gray-300 rounded-xl text-base focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white shadow-sm placeholder-gray-400">
+                        <button v-if="searchQuery" @click="searchQuery = ''" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 mt-8">
+                        <!-- Sidebar Navigation -->
+                        <div class="w-full md:w-64 flex-shrink-0">
+                            <div class="bg-white border rounded-lg shadow-sm overflow-hidden">
+                                <div class="p-4 bg-gray-50 border-b border-gray-200 cursor-pointer hover:bg-gray-100 transition" @click="activeCategory = 'all'">
+                                    <span class="font-bold" :class="activeCategory === 'all' ? 'text-primary' : 'text-gray-800'">
+                                        {{ $t('products.all') }}
+                                    </span>
+                                </div>
+                                
+                                <div v-for="mainCat in mainCategories" :key="mainCat.id" class="border-b border-gray-100 last:border-b-0">
+                                    <div 
+                                        class="p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition"
+                                        @click="toggleMainCategory(mainCat.id)"
+                                    >
+                                        <span class="font-semibold text-gray-800 flex items-center">
+                                            <i class="fa-solid fa-chevron-right text-xs mr-2 transition-transform duration-300" :class="{'rotate-90 text-primary': openMainCats.includes(mainCat.id)}"></i>
+                                            <span class="transition-colors duration-300" :class="{'text-primary': openMainCats.includes(mainCat.id)}">{{ $t('home.' + mainCat.id) }}</span>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="overflow-hidden transition-all duration-300 ease-in-out"
+                                         :style="{ maxHeight: openMainCats.includes(mainCat.id) ? '500px' : '0px', opacity: openMainCats.includes(mainCat.id) ? 1 : 0 }">
+                                        <div class="bg-gray-50 py-2">
+                                            <div 
+                                                v-for="subCat in getSubCategories(mainCat.id)" 
+                                                :key="subCat.id"
+                                                class="pl-10 pr-4 py-2 cursor-pointer text-sm transition-all duration-200 hover:text-primary hover:translate-x-1"
+                                                :class="activeCategory === subCat.id ? 'text-primary font-bold translate-x-1' : 'text-gray-600'"
+                                                @click="activeCategory = subCat.id"
+                                            >
+                                                {{ $t('home.' + subCat.id) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Grid -->
+                        <div class="flex-grow">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                                <div v-for="product in filteredProducts" :key="product.id" class="border border-gray-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white overflow-hidden flex flex-col group hover:-translate-y-1">
+                                    <div class="p-6 flex-grow flex flex-col justify-between">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-6">
+                                                <span class="bg-blue-50 text-primary text-xs px-3 py-1.5 rounded-full font-bold tracking-wide uppercase border border-blue-100">
+                                                    {{ $t('home.' + product.categoryId) }}
+                                                </span>
+                                                <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-primary group-hover:bg-blue-50 transition-colors duration-300">
+                                                    <i class="fa-solid text-lg" :class="getCategoryIcon(product.categoryId)"></i>
+                                                </div>
+                                            </div>
+                                            <div class="h-40 w-full mb-6 flex justify-center items-center rounded-lg">
+                                                <img :src="getCategoryImg(product.categoryId)" :alt="product.name" loading="lazy" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-sm">
+                                            </div>
+                                            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">{{ product.name }}</h3>
+                                            <p class="text-sm text-gray-500 line-clamp-2">Enterprise-grade solution designed for maximum reliability and performance in demanding environments.</p>
+                                        </div>
+                                        <div class="mt-6 flex items-center justify-between">
+                                            <div class="flex items-baseline text-2xl font-extrabold text-gray-900">
+                                                ${{ product.basePrice.toLocaleString() }}
+                                                <span class="ml-1 text-xs font-medium text-gray-400">{{ $t('products.price_from') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 pt-0 mt-auto flex flex-row space-x-2">
+                                        <a :href="'product-detail.html?id=' + product.id" class="flex-1 flex justify-center items-center px-1 py-2.5 border border-transparent rounded-lg shadow-sm text-xs xl:text-sm font-bold text-white bg-primary hover:bg-blue-900 transition-colors duration-300 whitespace-nowrap overflow-hidden">
+                                            <span class="truncate">{{ $t('products.configure') }}</span>
+                                        </a>
+                                        <button @click="addToCart(product)" class="flex-1 flex justify-center items-center px-1 py-2.5 border border-gray-300 rounded-lg shadow-sm text-xs xl:text-sm font-bold text-gray-600 bg-white hover:bg-gray-50 hover:text-gray-900 transition-colors duration-300 whitespace-nowrap overflow-hidden">
+                                            <i class="fa-solid fa-cart-plus mr-1.5 flex-shrink-0"></i> 
+                                            <span class="truncate">{{ $t('products.add_to_cart') }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div v-if="filteredProducts.length === 0" class="text-center py-16 text-gray-500 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                                <i class="fa-solid fa-inbox text-4xl mb-4 text-gray-300"></i>
+                                <p>No products found in this category.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <app-footer></app-footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/products.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        initVueApp(productsPageLogic);
+    </script>
+</body>
+</html>
+

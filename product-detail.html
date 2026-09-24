@@ -1,0 +1,703 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - vsdun</title>
+    <script src="libs/tailwindcss.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <script src="libs/vue.global.prod.js"></script>
+    <script src="libs/vue-i18n.global.prod.js"></script>
+    <style>
+        [v-cloak] { display: none; }
+        .product-desc h3 { font-size: 1.125rem; font-weight: 800; color: #111827; margin-top: 2rem; margin-bottom: 1rem; display: flex; items-center; }
+        .product-desc h3::before { content: ''; display: inline-block; width: 4px; height: 1.2rem; background-color: #1e3a8a; margin-right: 0.75rem; border-radius: 2px; }
+        .product-desc ul { list-style-type: none; padding-left: 1rem; margin-bottom: 2rem; }
+        .product-desc li { margin-bottom: 0.75rem; position: relative; padding-left: 1.5rem; }
+        .product-desc li::before { content: '閴?; position: absolute; left: 0; color: #10b981; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="app" v-cloak class="min-h-screen flex flex-col">
+        <app-navbar></app-navbar>
+
+        <main class="flex-grow">
+            <div v-if="product">
+                <!-- Hero Section -->
+                <div class="relative overflow-hidden bg-gray-100">
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="white" stop-opacity="0"/>
+            <stop offset="40%" stop-color="white" stop-opacity="0"/>
+            <stop offset="75%" stop-color="white" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="white" stop-opacity="1"/>
+        </linearGradient>
+        <mask id="fadeMask">
+            <rect width="100%" height="100%" fill="url(#fade)"/>
+        </mask>
+    </defs>
+    <g mask="url(#fadeMask)">
+<g id='topo' transform='translate(350, 30)'>
+  <path d='M-100,600 C300,100 1300,1050 1600,200' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,597.8 C305.2,110.5 1299.9,1049.9 1600,202.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,595.6 C310.5,120.9 1299.5,1049.8 1600,205.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,593.3 C315.7,131.4 1298.8,1049.5 1600,208.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,591.1 C320.9,141.8 1297.8,1049.1 1600,211.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,588.9 C326.1,152.1 1296.6,1048.7 1600,213.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,586.7 C331.4,162.4 1295.1,1048.1 1600,216.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,584.4 C336.6,172.6 1293.3,1047.4 1600,219.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,582.2 C341.8,182.7 1291.3,1046.6 1600,222.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,580 C346.9,192.7 1288.9,1045.7 1600,225' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,577.8 C352.1,202.6 1286.4,1044.7 1600,227.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,575.6 C357.2,212.4 1283.5,1043.6 1600,230.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,573.3 C362.4,222 1280.4,1042.4 1600,233.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,571.1 C367.5,231.5 1277.1,1041 1600,236.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,568.9 C372.6,240.8 1273.4,1039.6 1600,238.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,566.7 C377.6,250 1269.6,1038.1 1600,241.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,564.4 C382.7,259 1265.4,1036.4 1600,244.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,562.2 C387.7,267.8 1261,1034.7 1600,247.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,560 C392.7,276.3 1256.4,1032.9 1600,250' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,557.8 C397.7,284.7 1251.5,1030.9 1600,252.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,555.6 C402.6,292.8 1246.4,1028.9 1600,255.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,553.3 C407.5,300.7 1241.1,1026.8 1600,258.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,551.1 C412.4,308.4 1235.5,1024.5 1600,261.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,548.9 C417.2,315.8 1229.7,1022.2 1600,263.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,546.7 C422,322.9 1223.6,1019.7 1600,266.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,544.4 C426.8,329.8 1217.3,1017.2 1600,269.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,542.2 C431.5,336.4 1210.9,1014.6 1600,272.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,540 C436.2,342.7 1204.2,1011.9 1600,275' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,537.8 C440.8,348.7 1197.3,1009 1600,277.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,535.6 C445.4,354.4 1190.1,1006.1 1600,280.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,533.3 C450,359.8 1182.8,1003.1 1600,283.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,531.1 C454.5,364.9 1175.3,1000 1600,286.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,528.9 C459,369.6 1167.7,996.8 1600,288.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,526.7 C463.4,374.1 1159.8,993.5 1600,291.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,524.4 C467.8,378.2 1151.7,990.2 1600,294.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,522.2 C472.1,381.9 1143.5,986.7 1600,297.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,520 C476.3,385.3 1135.1,983.2 1600,300' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,517.8 C480.5,388.4 1126.6,979.5 1600,302.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,515.6 C484.7,391.1 1117.9,975.8 1600,305.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,513.3 C488.8,393.4 1109,972 1600,308.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,511.1 C492.8,395.4 1100,968.1 1600,311.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,508.9 C496.8,397.1 1090.9,964.1 1600,313.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,506.7 C500.7,398.4 1081.6,960.1 1600,316.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,504.4 C504.6,399.3 1072.2,956 1600,319.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,502.2 C508.4,399.8 1062.7,951.8 1600,322.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,500 C512.1,400 1053.1,947.5 1600,325' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,497.8 C515.8,399.8 1043.3,943.1 1600,327.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,495.6 C519.4,399.3 1033.5,938.7 1600,330.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,493.3 C522.9,398.4 1023.6,934.2 1600,333.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,491.1 C526.4,397.1 1013.6,929.6 1600,336.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,488.9 C529.8,395.4 1003.5,925 1600,338.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,486.7 C533.1,393.4 993.4,920.3 1600,341.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,484.4 C536.4,391.1 983.2,915.5 1600,344.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,482.2 C539.6,388.4 972.9,910.6 1600,347.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,480 C542.7,385.3 962.6,905.7 1600,350' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,477.8 C545.7,381.9 952.2,900.8 1600,352.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,475.6 C548.7,378.2 941.8,895.7 1600,355.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,473.3 C551.6,374.1 931.4,890.6 1600,358.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,471.1 C554.4,369.6 920.9,885.5 1600,361.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,468.9 C557.2,364.9 910.5,880.3 1600,363.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,466.7 C559.8,359.8 900,875 1600,366.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,464.4 C562.4,354.4 889.5,869.7 1600,369.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,462.2 C564.9,348.7 879.1,864.3 1600,372.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,460 C567.3,342.7 868.6,858.9 1600,375' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,457.8 C569.6,336.4 858.2,853.4 1600,377.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,455.6 C571.9,329.8 847.8,847.9 1600,380.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,453.3 C574.1,322.9 837.4,842.4 1600,383.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,451.1 C576.2,315.8 827.1,836.8 1600,386.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,448.9 C578.2,308.4 816.8,831.1 1600,388.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,446.7 C580.1,300.7 806.6,825.4 1600,391.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,444.4 C581.9,292.8 796.5,819.7 1600,394.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,442.2 C583.7,284.7 786.4,813.9 1600,397.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,440 C585.3,276.3 776.4,808.2 1600,400' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,437.8 C586.9,267.8 766.5,802.3 1600,402.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,435.6 C588.4,259 756.7,796.5 1600,405.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,433.3 C589.8,250 746.9,790.6 1600,408.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,431.1 C591.1,240.8 737.3,784.7 1600,411.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,428.9 C592.3,231.5 727.8,778.7 1600,413.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,426.7 C593.4,222 718.4,772.8 1600,416.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,424.4 C594.5,212.4 709.1,766.8 1600,419.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,422.2 C595.4,202.6 700,760.8 1600,422.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,420 C596.3,192.7 691,754.8 1600,425' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,417.8 C597.1,182.7 682.1,748.7 1600,427.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,415.6 C597.8,172.6 673.4,742.7 1600,430.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,413.3 C598.4,162.4 664.9,736.6 1600,433.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,411.1 C598.9,152.1 656.5,730.5 1600,436.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,408.9 C599.3,141.8 648.3,724.4 1600,438.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,406.7 C599.6,131.4 640.2,718.3 1600,441.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,404.4 C599.8,120.9 632.3,712.2 1600,444.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,402.2 C600,110.5 624.7,706.1 1600,447.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,400 C600,100 617.2,700 1600,450' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,397.8 C600,89.5 609.9,693.9 1600,452.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,395.6 C599.8,79.1 602.7,687.8 1600,455.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,393.3 C599.6,68.6 595.8,681.7 1600,458.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,391.1 C599.3,58.2 589.1,675.6 1600,461.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,388.9 C598.9,47.9 582.7,669.5 1600,463.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,386.7 C598.4,37.6 576.4,663.4 1600,466.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,384.4 C597.8,27.4 570.3,657.3 1600,469.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,382.2 C597.1,17.3 564.5,651.3 1600,472.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,380 C596.3,7.3 558.9,645.2 1600,475' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,377.8 C595.4,-2.6 553.6,639.2 1600,477.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,375.6 C594.5,-12.4 548.5,633.2 1600,480.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,373.3 C593.4,-22 543.6,627.2 1600,483.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,371.1 C592.3,-31.5 539,621.3 1600,486.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,368.9 C591.1,-40.8 534.6,615.3 1600,488.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,366.7 C589.8,-50 530.4,609.4 1600,491.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,364.4 C588.4,-59 526.6,603.5 1600,494.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,362.2 C586.9,-67.8 522.9,597.7 1600,497.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,360 C585.3,-76.3 519.6,591.8 1600,500' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,357.8 C583.7,-84.7 516.5,586.1 1600,502.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,355.6 C581.9,-92.8 513.6,580.3 1600,505.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,353.3 C580.1,-100.7 511.1,574.6 1600,508.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,351.1 C578.2,-108.4 508.7,568.9 1600,511.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,348.9 C576.2,-115.8 506.7,563.2 1600,513.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,346.7 C574.1,-122.9 504.9,557.6 1600,516.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,344.4 C571.9,-129.8 503.4,552.1 1600,519.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,342.2 C569.6,-136.4 502.2,546.6 1600,522.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,340 C567.3,-142.7 501.2,541.1 1600,525' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,337.8 C564.9,-148.7 500.5,535.7 1600,527.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,335.6 C562.4,-154.4 500.1,530.3 1600,530.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,333.3 C559.8,-159.8 500,525 1600,533.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,331.1 C557.2,-164.9 500.1,519.7 1600,536.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,328.9 C554.4,-169.6 500.5,514.5 1600,538.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,326.7 C551.6,-174.1 501.2,509.4 1600,541.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,324.4 C548.7,-178.2 502.2,504.3 1600,544.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,322.2 C545.7,-181.9 503.4,499.2 1600,547.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,320 C542.7,-185.3 504.9,494.3 1600,550' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,317.8 C539.6,-188.4 506.7,489.4 1600,552.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,315.6 C536.4,-191.1 508.7,484.5 1600,555.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,313.3 C533.1,-193.4 511.1,479.7 1600,558.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,311.1 C529.8,-195.4 513.6,475 1600,561.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,308.9 C526.4,-197.1 516.5,470.4 1600,563.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,306.7 C522.9,-198.4 519.6,465.8 1600,566.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,304.4 C519.4,-199.3 522.9,461.3 1600,569.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,302.2 C515.8,-199.8 526.6,456.9 1600,572.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,300 C512.1,-200 530.4,452.5 1600,575' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,297.8 C508.4,-199.8 534.6,448.2 1600,577.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,295.6 C504.6,-199.3 539,444 1600,580.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,293.3 C500.7,-198.4 543.6,439.9 1600,583.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,291.1 C496.8,-197.1 548.5,435.9 1600,586.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,288.9 C492.8,-195.4 553.6,431.9 1600,588.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,286.7 C488.8,-193.4 558.9,428 1600,591.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,284.4 C484.7,-191.1 564.5,424.2 1600,594.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,282.2 C480.5,-188.4 570.3,420.5 1600,597.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,280 C476.3,-185.3 576.4,416.8 1600,600' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,277.8 C472.1,-181.9 582.7,413.3 1600,602.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,275.6 C467.8,-178.2 589.1,409.8 1600,605.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,273.3 C463.4,-174.1 595.8,406.5 1600,608.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,271.1 C459,-169.6 602.7,403.2 1600,611.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,268.9 C454.5,-164.9 609.9,400 1600,613.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,266.7 C450,-159.8 617.2,396.9 1600,616.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,264.4 C445.4,-154.4 624.7,393.9 1600,619.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,262.2 C440.8,-148.7 632.3,391 1600,622.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,260 C436.2,-142.7 640.2,388.1 1600,625' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,257.8 C431.5,-136.4 648.3,385.4 1600,627.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,255.6 C426.8,-129.8 656.5,382.8 1600,630.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,253.3 C422,-122.9 664.9,380.3 1600,633.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,251.1 C417.2,-115.8 673.4,377.8 1600,636.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,248.9 C412.4,-108.4 682.1,375.5 1600,638.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,246.7 C407.5,-100.7 691,373.2 1600,641.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,244.4 C402.6,-92.8 700,371.1 1600,644.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,242.2 C397.7,-84.7 709.1,369.1 1600,647.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,240 C392.7,-76.3 718.4,367.1 1600,650' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,237.8 C387.7,-67.8 727.8,365.3 1600,652.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,235.6 C382.7,-59 737.3,363.6 1600,655.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,233.3 C377.6,-50 746.9,361.9 1600,658.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,231.1 C372.6,-40.8 756.7,360.4 1600,661.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,228.9 C367.5,-31.5 766.5,359 1600,663.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,226.7 C362.4,-22 776.4,357.6 1600,666.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,224.4 C357.2,-12.4 786.4,356.4 1600,669.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,222.2 C352.1,-2.6 796.5,355.3 1600,672.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,220 C346.9,7.3 806.6,354.3 1600,675' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,217.8 C341.8,17.3 816.8,353.4 1600,677.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,215.6 C336.6,27.4 827.1,352.6 1600,680.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,213.3 C331.4,37.6 837.4,351.9 1600,683.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,211.1 C326.1,47.9 847.8,351.3 1600,686.1' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,208.9 C320.9,58.2 858.2,350.9 1600,688.9' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,206.7 C315.7,68.6 868.6,350.5 1600,691.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,204.4 C310.5,79.1 879.1,350.2 1600,694.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,202.2 C305.2,89.5 889.5,350.1 1600,697.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+  <path d='M-100,200 C700,800 1100,300 1600,700' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,202 C700,789 1112.6,299.8 1600,697.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,204 C699.8,778 1125.1,299.3 1600,694.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,206 C699.6,767.1 1137.6,298.4 1600,692' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,208 C699.3,756.1 1150,297.2 1600,689.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,210 C698.9,745.2 1162.4,295.6 1600,686.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,212 C698.4,734.4 1174.6,293.7 1600,684' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,214 C697.9,723.6 1186.7,291.5 1600,681.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,216 C697.2,713 1198.7,288.9 1600,678.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,218 C696.5,702.4 1210.4,286 1600,676' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,220 C695.6,691.8 1222,282.7 1600,673.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,222 C694.7,681.4 1233.4,279.1 1600,670.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,224 C693.7,671.2 1244.5,275.3 1600,668' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,226 C692.6,661 1255.4,271.1 1600,665.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,228 C691.5,651 1266,266.6 1600,662.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,230 C690.2,641.1 1276.3,261.8 1600,660' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,232 C688.9,631.4 1286.3,256.7 1600,657.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,234 C687.5,621.8 1296,251.4 1600,654.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,236 C686,612.5 1305.4,245.8 1600,652' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,238 C684.4,603.3 1314.3,239.9 1600,649.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,240 C682.7,594.3 1322.9,233.8 1600,646.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,242 C681,585.5 1331.2,227.5 1600,644' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,244 C679.1,576.9 1339,220.9 1600,641.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,246 C677.2,568.5 1346.3,214.1 1600,638.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,248 C675.3,560.4 1353.3,207.2 1600,636' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,250 C673.2,552.5 1359.8,200 1600,633.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,252 C671.1,544.9 1365.9,192.7 1600,630.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,254 C668.9,537.5 1371.4,185.2 1600,628' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,256 C666.6,530.3 1376.6,177.5 1600,625.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,258 C664.2,523.4 1381.2,169.7 1600,622.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,260 C661.8,516.8 1385.3,161.8 1600,620' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,262 C659.3,510.5 1388.9,153.8 1600,617.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,264 C656.7,504.5 1392.1,145.7 1600,614.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,266 C654.1,498.7 1394.7,137.5 1600,612' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,268 C651.4,493.3 1396.8,129.2 1600,609.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,270 C648.6,488.1 1398.4,120.9 1600,606.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,272 C645.8,483.3 1399.4,112.6 1600,604' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,274 C642.9,478.8 1399.9,104.2 1600,601.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,276 C639.9,474.6 1399.9,95.8 1600,598.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,278 C636.9,470.7 1399.4,87.4 1600,596' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,280 C633.8,467.1 1398.4,79.1 1600,593.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,282 C630.7,463.9 1396.8,70.8 1600,590.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,284 C627.5,461 1394.7,62.5 1600,588' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,286 C624.2,458.4 1392.1,54.3 1600,585.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,288 C620.9,456.2 1388.9,46.2 1600,582.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,290 C617.6,454.3 1385.3,38.2 1600,580' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,292 C614.1,452.8 1381.2,30.3 1600,577.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,294 C610.7,451.6 1376.6,22.5 1600,574.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,296 C607.2,450.7 1371.4,14.8 1600,572' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,298 C603.6,450.2 1365.9,7.3 1600,569.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,300 C600,450 1359.8,0 1600,566.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,302 C596.4,450.2 1353.3,-7.2 1600,564' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,304 C592.7,450.7 1346.3,-14.1 1600,561.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,306 C588.9,451.6 1339,-20.9 1600,558.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,308 C585.2,452.8 1331.2,-27.5 1600,556' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,310 C581.3,454.3 1322.9,-33.8 1600,553.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,312 C577.5,456.2 1314.3,-39.9 1600,550.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,314 C573.6,458.4 1305.4,-45.8 1600,548' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,316 C569.7,461 1296,-51.4 1600,545.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,318 C565.8,463.9 1286.3,-56.7 1600,542.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,320 C561.8,467.1 1276.3,-61.8 1600,540' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,322 C557.8,470.7 1266,-66.6 1600,537.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,324 C553.8,474.6 1255.4,-71.1 1600,534.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,326 C549.7,478.8 1244.5,-75.3 1600,532' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,328 C545.7,483.3 1233.4,-79.1 1600,529.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,330 C541.6,488.1 1222,-82.7 1600,526.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,332 C537.5,493.3 1210.4,-86 1600,524' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,334 C533.4,498.7 1198.7,-88.9 1600,521.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,336 C529.2,504.5 1186.7,-91.5 1600,518.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,338 C525.1,510.5 1174.6,-93.7 1600,516' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,340 C520.9,516.8 1162.4,-95.6 1600,513.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,342 C516.7,523.4 1150,-97.2 1600,510.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,344 C512.6,530.3 1137.6,-98.4 1600,508' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,346 C508.4,537.5 1125.1,-99.3 1600,505.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,348 C504.2,544.9 1112.6,-99.8 1600,502.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,350 C500,552.5 1100,-100 1600,500' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,352 C495.8,560.4 1087.4,-99.8 1600,497.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,354 C491.6,568.5 1074.9,-99.3 1600,494.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,356 C487.4,576.9 1062.4,-98.4 1600,492' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,358 C483.3,585.5 1050,-97.2 1600,489.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,360 C479.1,594.3 1037.6,-95.6 1600,486.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,362 C474.9,603.3 1025.4,-93.7 1600,484' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,364 C470.8,612.5 1013.3,-91.5 1600,481.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,366 C466.6,621.8 1001.3,-88.9 1600,478.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,368 C462.5,631.4 989.6,-86 1600,476' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,370 C458.4,641.1 978,-82.7 1600,473.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,372 C454.3,651 966.6,-79.1 1600,470.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,374 C450.3,661 955.5,-75.3 1600,468' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,376 C446.2,671.2 944.6,-71.1 1600,465.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,378 C442.2,681.4 934,-66.6 1600,462.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,380 C438.2,691.8 923.7,-61.8 1600,460' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,382 C434.2,702.4 913.7,-56.7 1600,457.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,384 C430.3,713 904,-51.4 1600,454.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,386 C426.4,723.6 894.6,-45.8 1600,452' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,388 C422.5,734.4 885.7,-39.9 1600,449.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,390 C418.7,745.2 877.1,-33.8 1600,446.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,392 C414.8,756.1 868.8,-27.5 1600,444' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,394 C411.1,767.1 861,-20.9 1600,441.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,396 C407.3,778 853.7,-14.1 1600,438.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,398 C403.6,789 846.7,-7.2 1600,436' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,400 C400,800 840.2,0 1600,433.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,402 C396.4,811 834.1,7.3 1600,430.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,404 C392.8,822 828.6,14.8 1600,428' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,406 C389.3,832.9 823.4,22.5 1600,425.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,408 C385.9,843.9 818.8,30.3 1600,422.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,410 C382.4,854.8 814.7,38.2 1600,420' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,412 C379.1,865.6 811.1,46.2 1600,417.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,414 C375.8,876.4 807.9,54.3 1600,414.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,416 C372.5,887 805.3,62.5 1600,412' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,418 C369.3,897.6 803.2,70.8 1600,409.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,420 C366.2,908.2 801.6,79.1 1600,406.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,422 C363.1,918.6 800.6,87.4 1600,404' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,424 C360.1,928.8 800.1,95.8 1600,401.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,426 C357.1,939 800.1,104.2 1600,398.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,428 C354.2,949 800.6,112.6 1600,396' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,430 C351.4,958.9 801.6,120.9 1600,393.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,432 C348.6,968.6 803.2,129.2 1600,390.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,434 C345.9,978.2 805.3,137.5 1600,388' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,436 C343.3,987.5 807.9,145.7 1600,385.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,438 C340.7,996.7 811.1,153.8 1600,382.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,440 C338.2,1005.7 814.7,161.8 1600,380' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,442 C335.8,1014.5 818.8,169.7 1600,377.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,444 C333.4,1023.1 823.4,177.5 1600,374.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,446 C331.1,1031.5 828.6,185.2 1600,372' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,448 C328.9,1039.6 834.1,192.7 1600,369.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,450 C326.8,1047.5 840.2,200 1600,366.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,452 C324.7,1055.1 846.7,207.2 1600,364' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,454 C322.8,1062.5 853.7,214.1 1600,361.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,456 C320.9,1069.7 861,220.9 1600,358.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,458 C319,1076.6 868.8,227.5 1600,356' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,460 C317.3,1083.2 877.1,233.8 1600,353.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,462 C315.6,1089.5 885.7,239.9 1600,350.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,464 C314,1095.5 894.6,245.8 1600,348' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,466 C312.5,1101.3 904,251.4 1600,345.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,468 C311.1,1106.7 913.7,256.7 1600,342.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,470 C309.8,1111.9 923.7,261.8 1600,340' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,472 C308.5,1116.7 934,266.6 1600,337.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,474 C307.4,1121.2 944.6,271.1 1600,334.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,476 C306.3,1125.4 955.5,275.3 1600,332' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,478 C305.3,1129.3 966.6,279.1 1600,329.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,480 C304.4,1132.9 978,282.7 1600,326.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,482 C303.5,1136.1 989.6,286 1600,324' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,484 C302.8,1139 1001.3,288.9 1600,321.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,486 C302.1,1141.6 1013.3,291.5 1600,318.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,488 C301.6,1143.8 1025.4,293.7 1600,316' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,490 C301.1,1145.7 1037.6,295.6 1600,313.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,492 C300.7,1147.2 1050,297.2 1600,310.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,494 C300.4,1148.4 1062.4,298.4 1600,308' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,496 C300.2,1149.3 1074.9,299.3 1600,305.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,498 C300,1149.8 1087.4,299.8 1600,302.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+  <path d='M-100,800 C400,450 1000,500 1600,600' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,798.3 C405.2,449.9 992.1,513.1 1600,599.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,796.7 C410.5,449.8 984.3,526.1 1600,598.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,795 C415.7,449.5 976.5,539.1 1600,597.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,793.3 C420.9,449.2 968.6,552 1600,595.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,791.7 C426.2,448.7 960.8,564.7 1600,593.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,790 C431.4,448.2 953.1,577.3 1600,590.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,788.3 C436.6,447.5 945.3,589.6 1600,586.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,786.7 C441.8,446.7 937.6,601.7 1600,582.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,785 C447,445.9 930,613.5 1600,578.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,783.3 C452.2,444.9 922.4,625 1600,573.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,781.7 C457.4,443.8 914.8,636.2 1600,567.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,780 C462.6,442.7 907.3,646.9 1600,561.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,778.3 C467.7,441.4 899.9,657.3 1600,555.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,776.7 C472.9,440 892.5,667.3 1600,548.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,775 C478,438.6 885.2,676.8 1600,541.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,773.3 C483.2,437 878,685.8 1600,533.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,771.7 C488.3,435.4 870.8,694.3 1600,525.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,770 C493.4,433.7 863.8,702.3 1600,517.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,768.3 C498.5,431.8 856.9,709.7 1600,508.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,766.7 C503.5,429.9 850,716.5 1600,500' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,765 C508.6,427.9 843.3,722.8 1600,490.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,763.3 C513.6,425.8 836.6,728.4 1600,481.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,761.7 C518.6,423.6 830.1,733.4 1600,471.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,760 C523.6,421.4 823.7,737.8 1600,461.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,758.3 C528.6,419 817.4,741.5 1600,451.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,756.7 C533.5,416.6 811.2,744.5 1600,441.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,755 C538.4,414.1 805.2,746.9 1600,431.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,753.3 C543.3,411.5 799.3,748.6 1600,420.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,751.7 C548.2,408.8 793.5,749.7 1600,410.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,750 C553.1,406.1 787.9,750 1600,400' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,748.3 C557.9,403.3 782.4,749.7 1600,389.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,746.7 C562.7,400.4 777.1,748.6 1600,379.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,745 C567.5,397.4 771.9,746.9 1600,368.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,743.3 C572.2,394.4 766.9,744.5 1600,358.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,741.7 C576.9,391.3 762,741.5 1600,348.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,740 C581.6,388.2 757.3,737.8 1600,338.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,738.3 C586.2,385 752.8,733.4 1600,328.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,736.7 C590.9,381.7 748.4,728.4 1600,318.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,735 C595.4,378.4 744.2,722.8 1600,309.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,733.3 C600,375 740.2,716.5 1600,300' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,731.7 C604.5,371.6 736.4,709.7 1600,291.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,730 C609,368.1 732.7,702.3 1600,282.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,728.3 C613.4,364.6 729.2,694.3 1600,274.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,726.7 C617.9,361 725.9,685.8 1600,266.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,725 C622.2,357.4 722.8,676.8 1600,258.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,723.3 C626.6,353.8 719.9,667.3 1600,251.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,721.7 C630.9,350.1 717.2,657.3 1600,244.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,720 C635.1,346.4 714.7,646.9 1600,238.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,718.3 C639.3,342.6 712.4,636.2 1600,232.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,716.7 C643.5,338.8 710.2,625 1600,226.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,715 C647.6,335 708.3,613.5 1600,221.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,713.3 C651.7,331.2 706.6,601.7 1600,217.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,711.7 C655.8,327.3 705,589.6 1600,213.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,710 C659.8,323.5 703.7,577.3 1600,209.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,708.3 C663.7,319.6 702.6,564.7 1600,206.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,706.7 C667.7,315.7 701.6,552 1600,204.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,705 C671.5,311.8 700.9,539.1 1600,202.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,703.3 C675.3,307.9 700.4,526.1 1600,201.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,701.7 C679.1,303.9 700.1,513.1 1600,200.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,700 C682.8,300 700,500 1600,200' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,698.3 C686.5,296.1 700.1,486.9 1600,200.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,696.7 C690.1,292.1 700.4,473.9 1600,201.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,695 C693.7,288.2 700.9,460.9 1600,202.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,693.3 C697.3,284.3 701.6,448 1600,204.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,691.7 C700.7,280.4 702.6,435.3 1600,206.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,690 C704.2,276.5 703.7,422.7 1600,209.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,688.3 C707.5,272.7 705,410.4 1600,213.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,686.7 C710.9,268.8 706.6,398.3 1600,217.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,685 C714.1,265 708.3,386.5 1600,221.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,683.3 C717.3,261.2 710.2,375 1600,226.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,681.7 C720.5,257.4 712.4,363.8 1600,232.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,680 C723.6,253.6 714.7,353.1 1600,238.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,678.3 C726.7,249.9 717.2,342.7 1600,244.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,676.7 C729.7,246.2 719.9,332.7 1600,251.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,675 C732.6,242.6 722.8,323.2 1600,258.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,673.3 C735.5,239 725.9,314.2 1600,266.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,671.7 C738.3,235.4 729.2,305.7 1600,274.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,670 C741.1,231.9 732.7,297.7 1600,282.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,668.3 C743.8,228.4 736.4,290.3 1600,291.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,666.7 C746.4,225 740.2,283.5 1600,300' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,665 C749,221.6 744.2,277.2 1600,309.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,663.3 C751.5,218.3 748.4,271.6 1600,318.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,661.7 C754,215 752.8,266.6 1600,328.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,660 C756.4,211.8 757.3,262.2 1600,338.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,658.3 C758.7,208.7 762,258.5 1600,348.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,656.7 C761,205.6 766.9,255.5 1600,358.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,655 C763.3,202.6 771.9,253.1 1600,368.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,653.3 C765.4,199.6 777.1,251.4 1600,379.1' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,651.7 C767.5,196.7 782.4,250.3 1600,389.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,650 C769.6,193.9 787.9,250 1600,400' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,648.3 C771.5,191.2 793.5,250.3 1600,410.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,646.7 C773.4,188.5 799.3,251.4 1600,420.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,645 C775.3,185.9 805.2,253.1 1600,431.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,643.3 C777.1,183.4 811.2,255.5 1600,441.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,641.7 C778.8,181 817.4,258.5 1600,451.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,640 C780.4,178.6 823.7,262.2 1600,461.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,638.3 C782,176.4 830.1,266.6 1600,471.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,636.7 C783.5,174.2 836.6,271.6 1600,481.3' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,635 C785,172.1 843.3,277.2 1600,490.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,633.3 C786.4,170.1 850,283.5 1600,500' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,631.7 C787.7,168.2 856.9,290.3 1600,508.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,630 C788.9,166.3 863.8,297.7 1600,517.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,628.3 C790.1,164.6 870.8,305.7 1600,525.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,626.7 C791.3,163 878,314.2 1600,533.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,625 C792.3,161.4 885.2,323.2 1600,541.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,623.3 C793.3,160 892.5,332.7 1600,548.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,621.7 C794.2,158.6 899.9,342.7 1600,555.4' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,620 C795.1,157.3 907.3,353.1 1600,561.8' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,618.3 C795.9,156.2 914.8,363.8 1600,567.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,616.7 C796.6,155.1 922.4,375 1600,573.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,615 C797.2,154.1 930,386.5 1600,578.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,613.3 C797.8,153.3 937.6,398.3 1600,582.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,611.7 C798.3,152.5 945.3,410.4 1600,586.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,610 C798.8,151.8 953.1,422.7 1600,590.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,608.3 C799.1,151.3 960.8,435.3 1600,593.2' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,606.7 C799.5,150.8 968.6,448 1600,595.6' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,605 C799.7,150.5 976.5,460.9 1600,597.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,603.3 C799.9,150.2 984.3,473.9 1600,598.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+  <path d='M-100,601.7 C800,150.1 992.1,486.9 1600,599.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+</g>
+    </g>
+</svg>
+                <div class="relative max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 text-left mb-8 md:mb-0">
+                        <span class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-bold tracking-wide uppercase border border-primary/20 mb-4">
+                            {{ $t('home.' + product.categoryId) }}
+                        </span>
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">{{ product.name }}</h1>
+                        <p class="text-lg text-gray-500 max-w-2xl mb-8">{{ $t('products.' + product.id + '.subtitle') }}</p>
+                        <div class="flex items-center flex-wrap gap-4">
+                            <button @click.prevent="openOrderModal" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-white bg-primary hover:bg-blue-900 transition-colors whitespace-nowrap">{{ $t('products.configure') }}</button>
+                            <button @click="addToCart" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:text-gray-900 transition-colors shadow-sm whitespace-nowrap">
+                                <i class="fa-solid fa-cart-plus mr-2"></i> {{ $t('products.add_to_cart') }}
+                            </button>
+                            <span class="text-gray-500 font-medium whitespace-nowrap">{{ $t('products.price_from') }} <span class="text-gray-900 text-2xl font-bold ml-2">${{ product.basePrice.toLocaleString() }}</span></span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img v-if="category && category.image" :src="category.image" class="w-full max-w-lg object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Section with Tabs -->
+            <div class="py-12 bg-white min-h-[500px]">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Tabs -->
+                    <div class="flex justify-center border-b border-gray-200 mb-12">
+                        <button 
+                            @click="activeTab = 'features'"
+                            :class="activeTab === 'features' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="whitespace-nowrap py-4 px-4 sm:px-8 border-b-2 font-bold text-sm sm:text-lg transition-colors duration-300 focus:outline-none">
+                            <span class="sm:hidden">{{ $t('products.features_short') }}</span><span class="hidden sm:inline">{{ $t('products.features') }}</span>
+                        </button>
+                        <button 
+                            @click="activeTab = 'specs'"
+                            :class="activeTab === 'specs' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="whitespace-nowrap py-4 px-4 sm:px-8 border-b-2 font-bold text-sm sm:text-lg transition-colors duration-300 focus:outline-none ml-2 sm:ml-4">
+                            <span class="sm:hidden">{{ $t('products.specifications_short') }}</span><span class="hidden sm:inline">{{ $t('products.specifications') }}</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Content: Features -->
+                    <div v-show="activeTab === 'features'">
+                        <div v-if="$te('products.' + product.id + '.description')" class="max-w-4xl mx-auto product-desc text-gray-600 text-sm leading-relaxed bg-white">
+                            <div v-html="$t('products.' + product.id + '.description')"></div>
+                        </div>
+                        <div v-else class="text-center py-16 text-gray-500 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                            <i class="fa-solid fa-hourglass-half text-4xl mb-4 text-gray-300"></i>
+                            <p>{{ $t('products.details_coming_soon') }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content: Specs -->
+                    <div v-show="activeTab === 'specs'">
+                        <div v-if="$te('products.' + product.id + '.spec_type')" class="bg-white shadow-sm overflow-hidden sm:rounded-lg border border-gray-200">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_type') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_type_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_cpu') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_cpu_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_mem') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_mem_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_gpu') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_gpu_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_disk') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_disk_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_pcie') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_pcie_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_raid') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_raid_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_power') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_power_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_fan') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_fan_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_dim') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_dim_v') }}</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 w-1/6">{{ $t('products.' + product.id + '.spec_temp') }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">{{ $t('products.' + product.id + '.spec_temp_v') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                        <div v-else class="text-center py-16 text-gray-500 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                            <i class="fa-solid fa-list-check text-4xl mb-4 text-gray-300"></i>
+                            <p>{{ $t('products.specs_coming_soon') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div v-else class="py-24 text-center">
+                <h2 class="text-2xl font-bold text-gray-900">Product Not Found</h2>
+                <a href="products.html" class="mt-4 text-primary hover:underline">Back to Products</a>
+            </div>
+        </main>
+        <!-- Order Modal -->
+        <div v-if="showOrderModal" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="showOrderModal = false"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div v-if="!orderSubmitted">
+                        <form @submit.prevent="submitOrder">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4" id="modal-title">
+                                    {{ $t('products.order_form.title') }} - {{ product ? product.name : '' }}
+                                </h3>
+                                <div class="mt-2 space-y-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">{{ $t('products.order_form.name') }} <span class="text-red-500">*</span></label>
+                                        <input type="text" id="name" v-model="orderForm.name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="contact" class="block text-sm font-medium text-gray-700">{{ $t('products.order_form.contact') }} <span class="text-red-500">*</span></label>
+                                        <input type="text" id="contact" v-model="orderForm.contact" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="company" class="block text-sm font-medium text-gray-700">{{ $t('products.order_form.company') }}</label>
+                                        <input type="text" id="company" v-model="orderForm.company" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">{{ $t('products.order_form.message') }}</label>
+                                        <textarea id="message" v-model="orderForm.message" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm">
+                                    {{ $t('products.order_form.submit') }}
+                                </button>
+                                <button type="button" @click="showOrderModal = false" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                    {{ $t('products.order_form.cancel') }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div v-else class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                            <i class="fa-solid fa-check text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                            {{ $t('products.order_form.success_msg') }}
+                        </h3>
+                        <div class="mt-5 sm:mt-6">
+                            <button type="button" @click="showOrderModal = false" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:text-sm">
+                                {{ $t('products.order_form.close') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-footer></app-footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/product-detail.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        initVueApp(productDetailPageLogic);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
