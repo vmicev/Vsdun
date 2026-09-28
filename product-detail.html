@@ -11,7 +11,7 @@
     <script src="libs/vue-i18n.global.prod.js"></script>
     <style>
         [v-cloak] { display: none !important; }
-        .product-desc h3 { font-size: 1.125rem; font-weight: 800; color: #111827; margin-top: 2rem; margin-bottom: 1rem; display: flex; items-center; }
+                        .product-desc h3 { font-size: 1.125rem; font-weight: 800; color: #111827; margin-top: 2rem; margin-bottom: 1rem; display: flex; items-center; }
         .product-desc h3::before { content: ''; display: inline-block; width: 4px; height: 1.2rem; background-color: #1e3a8a; margin-right: 0.75rem; border-radius: 2px; }
         .product-desc ul { list-style-type: none; padding-left: 1rem; margin-bottom: 2rem; }
         .product-desc li { margin-bottom: 0.75rem; position: relative; padding-left: 1.5rem; }
@@ -40,7 +40,7 @@
     </defs>
     <g mask="url(#fadeMask)">
 <g id='topo' transform='translate(350, 30)'>
-  <path d='M-100,600 C300,100 1300,1050 1600,200' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
+    <path d='M-100,600 C300,100 1300,1050 1600,200' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
   <path d='M-100,597.8 C305.2,110.5 1299.9,1049.9 1600,202.8' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
   <path d='M-100,595.6 C310.5,120.9 1299.5,1049.8 1600,205.6' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
   <path d='M-100,593.3 C315.7,131.4 1298.8,1049.5 1600,208.3' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
@@ -220,7 +220,7 @@
   <path d='M-100,206.7 C315.7,68.6 868.6,350.5 1600,691.7' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
   <path d='M-100,204.4 C310.5,79.1 879.1,350.2 1600,694.4' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
   <path d='M-100,202.2 C305.2,89.5 889.5,350.1 1600,697.2' stroke='#00d2ff' stroke-width='0.4' fill='none' opacity='0.3' />
-  <path d='M-100,200 C700,800 1100,300 1600,700' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
+    <path d='M-100,200 C700,800 1100,300 1600,700' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
   <path d='M-100,202 C700,789 1112.6,299.8 1600,697.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
   <path d='M-100,204 C699.8,778 1125.1,299.3 1600,694.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
   <path d='M-100,206 C699.6,767.1 1137.6,298.4 1600,692' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
@@ -370,7 +370,7 @@
   <path d='M-100,494 C300.4,1148.4 1062.4,298.4 1600,308' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
   <path d='M-100,496 C300.2,1149.3 1074.9,299.3 1600,305.3' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
   <path d='M-100,498 C300,1149.8 1087.4,299.8 1600,302.7' stroke='#0284c7' stroke-width='0.4' fill='none' opacity='0.25' />
-  <path d='M-100,800 C400,450 1000,500 1600,600' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
+    <path d='M-100,800 C400,450 1000,500 1600,600' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
   <path d='M-100,798.3 C405.2,449.9 992.1,513.1 1600,599.7' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
   <path d='M-100,796.7 C410.5,449.8 984.3,526.1 1600,598.9' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
   <path d='M-100,795 C415.7,449.5 976.5,539.1 1600,597.5' stroke='#38bdf8' stroke-width='0.5' fill='none' opacity='0.25' />
@@ -680,6 +680,84 @@
     <script src="js/app.js"></script>
     <script>
         initVueApp(productDetailPageLogic);
+    </script>
+
+    <!-- Topo ocean wave animation (optimized for mobile) -->
+    <script>
+    (function() {
+        function initTopoWave() {
+            var topo = document.getElementById('topo');
+            if (!topo) return;
+            var paths = topo.querySelectorAll('path');
+            if (!paths.length) return;
+            var total = paths.length;
+            var amplitude = 18;
+            var waveSpeed = 0.04;
+            var waveLength = 0.15;
+            var startTime = null;
+            var rafId = null;
+            var isVisible = true;
+            var lastFrame = 0;
+            var frameInterval = 1000 / 30; // cap at 30fps to save resources
+
+            function animate(timestamp) {
+                if (!isVisible) return;
+                if (!startTime) startTime = timestamp;
+
+                // Throttle to ~30fps
+                if (timestamp - lastFrame < frameInterval) {
+                    rafId = requestAnimationFrame(animate);
+                    return;
+                }
+                lastFrame = timestamp;
+
+                var elapsed = (timestamp - startTime) / 1000;
+                for (var i = 0; i < total; i++) {
+                    var phase = i * waveLength;
+                    var y = Math.sin(elapsed * waveSpeed * Math.PI * 2 - phase) * amplitude;
+                    paths[i].setAttribute('transform', 'translate(0,' + y.toFixed(2) + ')');
+                }
+                rafId = requestAnimationFrame(animate);
+            }
+
+            // Pause when page is hidden (tab switch, screen off)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    isVisible = false;
+                    if (rafId) cancelAnimationFrame(rafId);
+                } else {
+                    isVisible = true;
+                    startTime = null;
+                    rafId = requestAnimationFrame(animate);
+                }
+            });
+
+            // Pause when hero section scrolls out of viewport
+            var heroSection = topo.closest('.relative.overflow-hidden');
+            if (heroSection && 'IntersectionObserver' in window) {
+                new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        if (!isVisible || !rafId) {
+                            isVisible = true;
+                            startTime = null;
+                            rafId = requestAnimationFrame(animate);
+                        }
+                    } else {
+                        isVisible = false;
+                        if (rafId) cancelAnimationFrame(rafId);
+                    }
+                }, { threshold: 0 }).observe(heroSection);
+            }
+
+            rafId = requestAnimationFrame(animate);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTopoWave);
+        } else {
+            initTopoWave();
+        }
+    })();
     </script>
 </body>
 </html>
