@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,7 +85,7 @@
                                             <div class="h-40 w-full mb-6 flex justify-center items-center rounded-lg">
                                                 <img :src="getCategoryImg(product.categoryId)" :alt="product.name" loading="lazy" class="w-4/5 h-4/5 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-sm">
                                             </div>
-                                            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">{{ product.name }}</h3>
+                                            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors" v-html="product.name.replace('VSDUN', '<i>VSDUN</i>')"></h3>
                                             <p class="text-sm text-gray-500 line-clamp-2">Enterprise-grade solution designed for maximum reliability and performance in demanding environments.</p>
                                         </div>
                                         <div class="mt-6 flex items-center justify-between">

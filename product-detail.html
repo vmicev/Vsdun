@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -498,7 +498,7 @@
                         <span class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-bold tracking-wide uppercase border border-primary/20 mb-4">
                             {{ $t('home.' + product.categoryId) }}
                         </span>
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">{{ product.name }}</h1>
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4" v-html="product.name.replace('VSDUN', '<i>VSDUN</i>')"></h1>
                         <p class="text-lg text-gray-500 max-w-2xl mb-8">{{ $t('products.' + product.id + '.subtitle') }}</p>
                         <div class="flex items-center flex-wrap gap-4">
                             <button @click.prevent="openOrderModal" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-white bg-primary hover:bg-blue-900 transition-colors whitespace-nowrap">{{ $t('products.configure') }}</button>
@@ -621,7 +621,7 @@
                         <form @submit.prevent="submitOrder">
                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4" id="modal-title">
-                                    {{ $t('products.order_form.title') }} - {{ product ? product.name : '' }}
+                                    {{ $t('products.order_form.title') }} - <span v-html="product ? product.name.replace('VSDUN', '<i>VSDUN</i>') : ''"></span>
                                 </h3>
                                 <div class="mt-2 space-y-4">
                                     <div>

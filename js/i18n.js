@@ -1,4 +1,4 @@
-﻿const messages = {
+const messages = {
     zh: {
         nav: {
             home: '首页',
@@ -81,11 +81,11 @@
         about: {
             title: '塑造未来计算',
             subtitle: 'VSDUN 是领先的企业级IT基础设施提供商。',
-            story_title: '我们的故事',
-            story_p1: '自成立以来，VSDUN 始终专注于高性能计算和数据中心解决方案的研发。我们深知在这个数据驱动的时代，稳定且强大的算力是企业成功的关键。',
-            story_p2: '从最初的定制化服务器装配，到如今涵盖边缘计算、AI加速以及存储系统的全栈产品线，我们已成功服务了数百家行业顶尖客户，助力他们在数字浪潮中保持领先。',
-            story_p3: '十多年来，我们不断挑战技术边界。通过与全球领先的半导体厂商、开源社区及顶尖科研机构的深度合作，VSDUN 构建了一个从底层硬件架构到上层运维管理的完整生态闭环，为客户提供真正“开箱即用”的企业级算力底座。',
-            story_p4: '面向未来，VSDUN 将继续秉持“以技术创新降低计算门槛”的使命。无论是推动百亿参数大模型的训练，还是支撑高并发的金融交易系统，我们都将是您最坚实、最可靠的 IT 基础设施伙伴。',
+            story_title: '公司简介',
+            story_p1: '作为黑龙江省级区域品牌 VSDUN 独家运营主体，公司倾力打造“VSDUN·龙江制造”全系列算力产品体系。业务全面覆盖服务器、工作站、存储设备、液冷设备、集装箱数据中心、边缘算力设备等全品类 IT 硬件，充分满足各类硬件供给需求。',
+            story_p2: '凭借稳健的资金实力、完善的合规管控体系及成熟的上游供应链资源，公司全系产品均通过海外 EAC 权威认证，历经出厂、出库、终端落地三重严苛稳定性检测，严格遵循海外数据中心建设及运维标准。同时，公司组建了专业国际贸易服务团队，配备专属多语种客户经理与 7×24 小时远程技术保障力量，提供报关、结汇、单证合规、售后运维等全流程一站式配套服务，保障海外项目高效合规交付。',
+            story_p3: '公司深耕 VSDUN 品牌海外生态，已实现多批次设备出口交付，积累了稳定优质的海内外供应链资源。聚焦 AI 智算、绿色节能机房、数据存储与归档三大核心应用场景，提供成套定制化算力解决方案。区别于传统单一硬件贸易模式，依托长效履约能力与交付保障，公司持续为全球客户提供合规可靠、高性价比、可定制的一站式 IT 基础设施采购与落地服务，致力于成为海外市场备受信赖的专业化 IT 设备服务商。',
+            story_p4: '',
             vision_title: '愿景',
             vision_desc: '成为全球最值得信赖的IT基础设施合作伙伴。',
             mission_title: '使命',
@@ -101,7 +101,7 @@
             stat_4: '7x24',
             stat_4_desc: '全天候支持',
             team_title: '全球化专业团队',
-            team_desc: '我们在北京、上海、硅谷和法兰克福均设有研发中心和技术服务支持节点，确保快速响应全球客户需求。'
+            team_desc: '我们在哈尔滨、香港和迪拜均设有研发中心和技术服务支持节点，确保快速响应全球客户需求。'
         },
         home: {
             hero_title: '构建您的数字基石',
@@ -387,11 +387,11 @@
         about: {
             title: 'Shaping the Future of Computing',
             subtitle: 'VSDUN is a leading enterprise IT infrastructure provider.',
-            story_title: 'Our Story',
-            story_p1: 'Since our founding, VSDUN has focused on R&D of high-performance computing and data center solutions. We know that stable and powerful compute is the key to enterprise success in this data-driven era.',
-            story_p2: 'From custom server assembly to a full-stack lineup including edge computing, AI acceleration, and storage systems, we have successfully served hundreds of top industry clients.',
-            story_p3: 'For over a decade, we have continuously pushed the boundaries of technology. Through deep collaboration with leading semiconductor manufacturers, open-source communities, and top research institutions, VSDUN has built a complete ecological closed loop from underlying hardware architecture to upper-level O&M management.',
-            story_p4: 'Looking to the future, VSDUN will continue to uphold the mission of "lowering the computing barrier through technical innovation." Whether it is driving the training of large AI models or supporting high-concurrency financial trading systems, we will be your most solid and reliable IT infrastructure partner.',
+            story_title: 'Company Profile',
+            story_p1: 'As the exclusive operator of the Heilongjiang provincial regional brand VSDUN, the company is dedicated to building the "VSDUN · Longjiang Manufacturing" full-series computing product system. Our business comprehensively covers a full range of IT hardware including servers, workstations, storage devices, liquid cooling equipment, containerized data centers, and edge computing devices, fully meeting various hardware supply needs.',
+            story_p2: 'Relying on robust financial strength, a sound compliance management system, and mature upstream supply chain resources, all our products have passed the authoritative overseas EAC certification. They undergo rigorous triple stability testing—from factory production to warehouse dispatch and final terminal deployment—strictly adhering to overseas data center construction and operation standards. Additionally, we have established a professional international trade service team, equipped with dedicated multilingual account managers and 7x24 remote technical support, providing a full-process one-stop supporting service encompassing customs clearance, foreign exchange settlement, document compliance, and after-sales maintenance, ensuring the efficient and compliant delivery of overseas projects.',
+            story_p3: 'Deeply cultivating the overseas ecosystem of the VSDUN brand, the company has achieved multiple batches of equipment export delivery and accumulated stable and high-quality domestic and foreign supply chain resources. Focusing on three core application scenarios: AI computing, green and energy-saving server rooms, and data storage and archiving, we provide complete, customized computing solutions. Distinct from traditional single-hardware trade models, and backed by long-term fulfillment capabilities and delivery guarantees, we continue to provide global customers with compliant, reliable, cost-effective, and customizable one-stop IT infrastructure procurement and deployment services, committed to becoming a highly trusted professional IT equipment service provider in the overseas market.',
+            story_p4: '',
             vision_title: 'Vision',
             vision_desc: 'To be the world’s most trusted IT infrastructure partner.',
             mission_title: 'Mission',
@@ -407,7 +407,7 @@
             stat_4: '7x24',
             stat_4_desc: 'Global Support',
             team_title: 'Global Professional Team',
-            team_desc: 'We have R&D centers and support nodes in Beijing, Shanghai, Silicon Valley, and Frankfurt to ensure rapid response to global customer needs.'
+            team_desc: 'We have R&D centers and technical support nodes in Harbin, Hong Kong, and Dubai to ensure rapid response to global customer needs.'
         },
         home: {
             hero_title: 'Build Your Digital Foundation',
@@ -691,11 +691,11 @@
         about: {
             title: 'Формируя будущее вычислений',
             subtitle: 'VSDUN - ведущий поставщик корпоративной ИТ-инфраструктуры.',
-            story_title: 'Наша история',
-            story_p1: 'С момента основания мы сосредоточились на высокопроизводительных вычислениях и решениях для ЦОД. Стабильные и мощные вычисления - ключ к успеху в эту эпоху.',
-            story_p2: 'От сборки серверов до систем хранения и ИИ - мы успешно обслуживаем сотни ведущих отраслевых клиентов.',
-            story_p3: 'Более десяти лет мы постоянно расширяем границы технологий. Благодаря глубокому сотрудничеству с ведущими производителями полупроводников и исследовательскими институтами, VSDUN создала полную экологическую замкнутую систему.',
-            story_p4: 'В будущем VSDUN продолжит следовать миссии "снижения барьера вычислений за счет инноваций". Независимо от того, обучаете ли вы модели ИИ или поддерживаете финансовые системы, мы будем вашим самым надежным ИТ-партнером.',
+            story_title: 'О компании',
+            story_p1: 'Являясь эксклюзивным оператором регионального бренда провинции Хэйлунцзян VSDUN, компания прилагает все усилия для создания полной серии вычислительных продуктов «VSDUN · Longjiang Manufacturing». Наш бизнес всесторонне охватывает весь спектр ИТ-оборудования, включая серверы, рабочие станции, устройства хранения данных, оборудование для жидкостного охлаждения, контейнерные центры обработки данных и устройства периферийных вычислений, полностью удовлетворяя различные потребности в поставках оборудования.',
+            story_p2: 'Опираясь на надежную финансовую базу, совершенную систему контроля за соблюдением нормативных требований и зрелые ресурсы поставщиков, вся наша продукция прошла авторитетную зарубежную сертификацию EAC. Она проходит строгие тройные испытания на стабильность: на заводе, при отгрузке со склада и при конечном развертывании, строго соблюдая зарубежные стандарты строительства и эксплуатации центров обработки данных. Кроме того, компания создала профессиональную команду по обслуживанию международной торговли с выделенными многоязычными менеджерами по работе с клиентами и удаленной технической поддержкой 7x24, предоставляя комплексные услуги «под ключ», включая таможенное оформление, валютные расчеты, соблюдение требований к документации и послепродажное обслуживание, гарантируя эффективную реализацию зарубежных проектов.',
+            story_p3: 'Глубоко развивая зарубежную экосистему бренда VSDUN, компания уже осуществила экспортные поставки оборудования несколькими партиями и накопила стабильные и высококачественные ресурсы в цепочке поставок как внутри страны, так и за рубежом. Ориентируясь на три основных сценария применения — интеллектуальные вычисления ИИ, экологичные и энергосберегающие серверные помещения, а также хранение и архивирование данных — мы предлагаем комплексные индивидуальные решения в области вычислений. В отличие от традиционных моделей торговли исключительно оборудованием, опираясь на возможности долгосрочного выполнения обязательств и гарантии доставки, компания продолжает предоставлять клиентам по всему миру надежные, экономичные и индивидуализированные услуги по закупке и развертыванию ИТ-инфраструктуры «под ключ», стремясь стать высоконадежным профессиональным поставщиком ИТ-услуг и оборудования на зарубежных рынках.',
+            story_p4: '',
             vision_title: 'Видение',
             vision_desc: 'Быть самым надежным партнером по ИТ-инфраструктуре.',
             mission_title: 'Миссия',
@@ -711,7 +711,7 @@
             stat_4: '7x24',
             stat_4_desc: 'Поддержка',
             team_title: 'Глобальная команда',
-            team_desc: 'У нас есть центры исследований и разработок в Пекине, Шанхае, Кремниевой долине и Франкфурте.'
+            team_desc: 'У нас есть центры исследований и разработок, а также узлы технической поддержки в Харбине, Гонконге и Дубае, чтобы обеспечить быстрое реагирование на потребности клиентов по всему миру.'
         },
         home: {
             hero_title: 'Создайте свою цифровую основу',
