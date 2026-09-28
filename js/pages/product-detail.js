@@ -1,9 +1,9 @@
-﻿const productDetailPageLogic = {
+const productDetailPageLogic = {
     data() {
         return {
             product: null,
             category: null,
-            activeTab: 'features',
+            activeTab: (window.location.hash ? window.location.hash.substring(1) : 'features'),
             showOrderModal: false,
             orderSubmitted: false,
             orderForm: {
@@ -11,6 +11,13 @@
                 contact: '',
                 company: '',
                 message: ''
+            }
+        }
+    },
+    watch: {
+        activeTab(newTab) {
+            if (newTab) {
+                window.history.replaceState(null, null, '#' + newTab);
             }
         }
     },
